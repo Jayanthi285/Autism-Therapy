@@ -1,0 +1,21 @@
+Age,Gender,Primary Concern,Secondary Symptoms,Communication Level,Behavioral Challenges,Social Interaction,Learning Challenges,Doctor Notes,Therapy Recommended
+4,Male,Delayed speech,None,Low,None,Avoids eye contact,Mild,"Shows limited verbal output, responds to gestures",Speech Therapy
+5,Female,Hyperactivity,Impulsivity,Medium,Frequent movement,Normal,Mild,"Difficulty staying seated, interrupts often",Behavioral Therapy
+6,Male,Social withdrawal,Sensitivity to noise,Low,None,Rare peer interactions,Moderate,"Prefers isolation, covers ears in loud environments",Occupational Therapy
+7,Female,Anxiety,Shyness,High,None,Avoids group tasks,Moderate,"Fears new situations, appears tense",Cognitive Behavioral Therapy
+8,Male,Aggressive behavior,Tantrums,Medium,Physical aggression,Minimal interaction,None,"Hits peers when frustrated",Behavioral Therapy
+4,Female,Speech delay,Low vocabulary,Low,None,Plays alone,Mild,"Uses only single words",Speech Therapy
+9,Male,Difficulty focusing,Forgetfulness,High,None,Average socializing,Moderate,"Loses materials frequently",Special Education Support
+10,Female,Lack of emotional expression,Slow responses,Medium,None,Avoids sharing feelings,Moderate,"Flat affect observed",Play Therapy
+6,Male,Sensory seeking behavior,Hand flapping,Medium,None,Normal,None,"Seeks strong touch, jumps frequently",Occupational Therapy
+5,Female,Separation anxiety,Crying episodes,High,None,Clings to mother,Minimal,"Very fearful during separation",Cognitive Behavioral Therapy
+7,Male,Academic difficulty,Slow learning,High,None,Adequate peer interaction,Severe,"Struggles to read basic words",Special Education Support
+9,Female,Mood swings,Argumentative behavior,High,None,Interacts normally,Mild,"Becomes upset quickly",Behavioral Therapy
+8,Male,Repetitive behaviors,Lining up objects,Low,None,Prefers routines,Mild,"Gets distressed when routine changes",Occupational Therapy
+6,Female,Stuttering,Anxiety while speaking,Medium,None,Normal,Mild,"Blocks frequently when speaking",Speech Therapy
+4,Male,Nonverbal,No gestures,Very low,None,Avoids peers,Severe,"Does not use words or gestures",Speech Therapy
+11,Female,Low self-esteem,Negative self-talk,High,None,Socially active,Moderate,"Feels inferior to peers",Cognitive Behavioral Therapy
+10,Male,Anger outbursts,Disobedience,High,Verbal aggression,Limited,Moderate,"Difficulty following rules",Behavioral Therapy
+5,Female,Tactile sensitivity,Avoids touching objects,Low,None,Limited,Mild,"Dislikes certain textures",Occupational Therapy
+8,Male,Memory difficulty,Trouble following instructions,High,None,Normal,Moderate,"Forgets tasks quickly",Special Education Support
+6,Female,Slow social development,Limited play skills,Medium,None,Prefers adults to peers,Mild,"Struggles with cooperative play",Play Therapy
