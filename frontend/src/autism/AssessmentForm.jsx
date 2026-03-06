@@ -1,41 +1,90 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./AssessmentForm.css";
 
 function AssessmentForm() {
+   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     age: "",
     gender: "",
-    sleepQuality: "",
-    smallSounds: "",
-    wholePicture: "",
-    socialGroup: "",
-    activities: "",
-    conversation: "",
-    storyFeelings: "",
-    newFriends: "",
+
+    eyeContact: "",
+    respondName: "",
+    playInterest: "",
+    preferAlone: "",
+    facialExpressionDifficulty: "",
+
+    meaningfulSentences: "",
+    speechDelay: "",
+    understandInstructions: "",
+    gesturesUse: "",
+
+    repetitiveMovements: "",
+    routineUpset: "",
+    repeatWords: "",
+
+    sensorySensitivity: "",
+    objectFocus: "",
+    distractedByMovement: ""
   });
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  /*const handleSubmit = (e) => {
     e.preventDefault();
     console.log(formData);
-    alert("Form submitted successfully!");
-  };
+    alert("Assessment Submitted Successfully!");
+  };*/
+
+
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  try {
+    const response = await fetch("http://127.0.0.1:5000/predict", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(formData)
+    });
+
+    const result = await response.json();
+
+    if (result.error) {
+      alert("Error: " + result.error);
+    } else {
+      navigate("/result", { state: result });
+    }
+
+  } catch (error) {
+    alert("Server connection failed!");
+  }
+};
+
+  const options = (
+    <>
+      <option value="">Select</option>
+      <option value="Never">Never</option>
+      <option value="Rarely">Rarely</option>
+      <option value="Sometimes">Sometimes</option>
+      <option value="Often">Often</option>
+    </>
+  );
 
   return (
     <div className="form-page">
       <div className="form-card">
-        <h1>Therapy Recommendation System for Autism</h1>
+        <h1>Early Autism Screening & Therapy Recommendation</h1>
         <p className="form-desc">
-          This form collects details of children facing autism-related issues in
-          daily life. The data helps train the ML model and provide therapy
-          recommendations for early-stage autism.
+          This screening tool is for children aged 4–6 years.
+          It is not a medical diagnosis but an early risk assessment system.
         </p>
 
         <form onSubmit={handleSubmit}>
+
           <div className="form-group">
             <label>Age *</label>
             <input type="number" name="age" onChange={handleChange} required />
@@ -45,107 +94,120 @@ function AssessmentForm() {
             <label>Gender *</label>
             <select name="gender" onChange={handleChange} required>
               <option value="">Select</option>
-              <option>Male</option>
-              <option>Female</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
             </select>
           </div>
 
           <div className="form-group">
-            <label>Sleep Quality *</label>
-            <select name="sleepQuality" onChange={handleChange} required>
-              <option value="">Select</option>
-              <option>Good</option>
-              <option>Moderate</option>
-              <option>Poor</option>
+            <label>Does the child make eye contact while talking? *</label>
+            <select name="eyeContact" onChange={handleChange} required>
+              {options}
             </select>
           </div>
 
           <div className="form-group">
-            <label>She/he often notices small sounds when others do not *</label>
-            <select name="smallSounds" onChange={handleChange} required>
-              <option value="">Select</option>
-              <option>Often</option>
-              <option>Sometimes</option>
-              <option>Never</option>
+            <label>Does the child respond when their name is called? *</label>
+            <select name="respondName" onChange={handleChange} required>
+              {options}
             </select>
           </div>
 
           <div className="form-group">
-            <label>
-              She/he usually concentrates more on the whole picture rather than
-              small details *
-            </label>
-            <select name="wholePicture" onChange={handleChange} required>
-              <option value="">Select</option>
-              <option>Often</option>
-              <option>Sometimes</option>
-              <option>Never</option>
+            <label>Does the child show interest in playing with other children? *</label>
+            <select name="playInterest" onChange={handleChange} required>
+              {options}
             </select>
           </div>
 
           <div className="form-group">
-            <label>
-              In a social group, she/he can easily keep track of several
-              people's conversations *
-            </label>
-            <select name="socialGroup" onChange={handleChange} required>
-              <option value="">Select</option>
-              <option>Often</option>
-              <option>Sometimes</option>
-              <option>Never</option>
+            <label>Does the child prefer to play alone? *</label>
+            <select name="preferAlone" onChange={handleChange} required>
+              {options}
             </select>
           </div>
 
           <div className="form-group">
-            <label>
-              She/he finds it easy to go back and forth between different
-              activities *
-            </label>
-            <select name="activities" onChange={handleChange} required>
-              <option value="">Select</option>
-              <option>Often</option>
-              <option>Sometimes</option>
-              <option>Never</option>
+            <label>Does the child have difficulty understanding facial expressions or emotions? *</label>
+            <select name="facialExpressionDifficulty" onChange={handleChange} required>
+              {options}
             </select>
           </div>
 
           <div className="form-group">
-            <label>
-              She/he doesn’t know how to keep a conversation going with peers *
-            </label>
-            <select name="conversation" onChange={handleChange} required>
-              <option value="">Select</option>
-              <option>Often</option>
-              <option>Sometimes</option>
-              <option>Never</option>
+            <label>Does the child speak in meaningful sentences (3–5 words)? *</label>
+            <select name="meaningfulSentences" onChange={handleChange} required>
+              {options}
             </select>
           </div>
 
           <div className="form-group">
-            <label>
-              When read a story, she/he finds it difficult to work out the
-              character’s feelings *
-            </label>
-            <select name="storyFeelings" onChange={handleChange} required>
-              <option value="">Select</option>
-              <option>Often</option>
-              <option>Sometimes</option>
-              <option>Never</option>
+            <label>Does the child show speech delay compared to same-age children? *</label>
+            <select name="speechDelay" onChange={handleChange} required>
+              {options}
             </select>
           </div>
 
           <div className="form-group">
-            <label>She/he finds it hard to make new friends *</label>
-            <select name="newFriends" onChange={handleChange} required>
-              <option value="">Select</option>
-              <option>Yes</option>
-              <option>No</option>
+            <label>Does the child understand simple instructions? *</label>
+            <select name="understandInstructions" onChange={handleChange} required>
+              {options}
+            </select>
+          </div>
+
+          <div className="form-group">
+            <label>Does the child use gestures like pointing, waving, or nodding? *</label>
+            <select name="gesturesUse" onChange={handleChange} required>
+              {options}
+            </select>
+          </div>
+
+          <div className="form-group">
+            <label>Does the child show repetitive movements (hand flapping, rocking, spinning)? *</label>
+            <select name="repetitiveMovements" onChange={handleChange} required>
+              {options}
+            </select>
+          </div>
+
+          <div className="form-group">
+            <label>Does the child become upset when routines change? *</label>
+            <select name="routineUpset" onChange={handleChange} required>
+              {options}
+            </select>
+          </div>
+
+          <div className="form-group">
+            <label>Does the child repeat the same words or phrases frequently? *</label>
+            <select name="repeatWords" onChange={handleChange} required>
+              {options}
+            </select>
+          </div>
+
+          <div className="form-group">
+            <label>Is the child unusually sensitive to sounds, lights, or touch? *</label>
+            <select name="sensorySensitivity" onChange={handleChange} required>
+              {options}
+            </select>
+          </div>
+
+          <div className="form-group">
+            <label>Does the child focus more on objects than on people? *</label>
+            <select name="objectFocus" onChange={handleChange} required>
+              {options}
+            </select>
+          </div>
+
+          <div className="form-group">
+            <label>Does the child get easily distracted by moving objects? *</label>
+            <select name="distractedByMovement" onChange={handleChange} required>
+              {options}
             </select>
           </div>
 
           <button type="submit" className="submit-btn">
             Submit Assessment
           </button>
+
         </form>
       </div>
     </div>

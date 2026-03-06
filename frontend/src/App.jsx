@@ -6,6 +6,7 @@ import Home from "./autism/Home";
 import AssessmentForm from "./autism/AssessmentForm";
 import Contact from "./autism/Contact";
 import Therapy from "./autism/Therapy";
+import Result from "./autism/Result";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/assessment" element={<AssessmentForm />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/therapy" element={<Therapy />} />
+         <Route path="/result" element={<Result />} />
       </Routes>
     </BrowserRouter>
   );
